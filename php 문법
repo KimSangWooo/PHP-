@@ -1,0 +1,32 @@
+php 타입
+(실행환경 - Atom)
+
+String 
+Integer
+Float (floating point numbers - also called double)
+Boolean
+Array
+Object
+NULL
+Resource
+
+php 숫자표현
+<!doctype html>
+<html>
+<body>
+<?php
+echo 1.2;
+ ?>
+</body>
+</html>
+
+php 문자표현
+
+
+ <?php
+ echo 'cream '.'spagetti';
+  ?>
+
+ <?php
+echo strlen("ice cream");
+  ?>
