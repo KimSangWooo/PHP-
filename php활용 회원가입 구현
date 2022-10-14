@@ -1,0 +1,55 @@
+
+
+<form method="post" action="check_signup.php" class="signupForm">
+    <h2>Sign up</h2>
+    <div class="idForm">
+      <input type="text" name="id" class="id" placeholder="Username">
+    </div>
+    <div class="emailForm">
+      <input type="text" name="email" class="id" placeholder="e-mail">
+    </div> 
+    <div class="passForm">
+      <input type="password" name="pw" class="pw" placeholder="Password">
+    </div>
+    <div class="confirmpassForm">
+      <input type="password" class="pw" placeholder="Confirm Password">
+    </div>
+    <button type="submit" class="btn" onclick="button()">
+      SIGN UP
+    </button>
+  </form>
+  
+ <?php
+error_reporting( E_ALL );
+ini_set( "display_errors", 1 );
+session_start();
+$host = 'localhost';
+$user = '';
+$pw = '';
+$db_name = '';
+$conn = mysqli_connect($host, $user, $pw, $db_name);
+$signup_id = $_POST['id'];
+$signup_pass = $_POST['pw'];
+$signup_email = $_POST['email'];
+$sql = "INSERT INTO member VALUES ('$signup_id', '$signup_pass', '$signup_email')";
+
+입력 폼 값이 없으면 알림창을 띄우고 이전페이지로 화면전환
+값이 있으면 입력받은 회원 정보를 db에 추가
+
+$sql = "INSERT INTO member VALUES ('$signup_id', '$signup_pass', '$signup_email')";
+회원 가입이 완료되면 알림창을 띄우고 
+
+if ($signup_id == "" || $signup_email == "" || $signup_pass == "") {
+   echo '<script>alert("비어있는 항목이 있습니다.");</script>';
+   echo '<script>history.back();</script>';
+}
+
+else {
+   mysqli_query($conn, $sql);
+   echo '<script>alert("회원 가입이 완료되었습니다.");</script>';
+   echo "<script>location.replace('login.php');</script>";
+}
+?>
+
+
+  
